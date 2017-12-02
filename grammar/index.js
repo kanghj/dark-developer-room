@@ -1,12 +1,4 @@
 
-var tracery = require('tracery-grammar');
-var animals = require('animals');
-const fs = require('fs');
-
-// the worst interface
-const wordListPath = require('word-list');
-const words = fs.readFileSync(wordListPath, 'utf8').split('\n');
-
 var grammar = tracery.createGrammar({
 
   "alphabet": ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
@@ -15,8 +7,8 @@ var grammar = tracery.createGrammar({
 
   "norse_god": ["Bolverk", "Einherjar", "Eir", "Fjorgyn", "Fulla", "Gangnrad", "Grimnir", "Harbard", "Hermod", "Hod", "Honir", "Idun", "Kvasir", "Lofn", "Magni", "Mimir", "Modgud", "Modi", "Moon", "Nanna", "Narvi", "Night", "Norns", "Od", "Ran", "Rig", "Rind", "Saga", "Sif", "Sigyn", "Sjofn", "Sun", "Syn", "Thrud", "Ull", "Var", "Vidar", "Vor", "Algron", "Bilskirnir", "Breidablik", "Elivagar", "Eljudnir", "Fensalir", "Folkvang", "Gimli", "Ginnungagap", "Gladsheim", "Glitnir", "Gnipahellir", "Himinbjorg", "Hlesey", "Hlidskjalf", "Hnitbjorg", "Hvergelmir", "Idavoll", "Iving", "Lyfjaberg", "Lyngvi", "Lyr", "Muspell", "Nastrond", "Okolnir", "Sessrumnir", "Sindri", "Sokkvabekk", "Svartalfheim", "Thrudheim", "Thrymheim", "Utgard", "Valaskjalf", "Vigrid", "Vingolf", "Ydalir"],
 
-  "animals": animals.words,
-  "words": words,
+  "animals": words.animals,
+  "words": words.words,
 
   "product_name": [
     "#greek_god#",
@@ -346,14 +338,49 @@ grammar.addModifiers({
   }
 });
 
-for (var i = 0; i < 4; i++) {
-  console.log(grammar.flatten('#product_blurb#') + '\n');
+function test() {
+  for (var i = 0; i < 4; i++) {
+    console.log(grammar.flatten('#product_blurb#') + '\n');
+  }
+
+  for (var i = 0; i < 4; i++) {
+    console.log(grammar.flatten('#pl_blurb#') + '\n');
+  }
+
+  for (var i = 0; i < 10; i++) {
+    console.log(grammar.flatten('#commit_message#'));
+  }
 }
 
-for (var i = 0; i < 4; i++) {
-  console.log(grammar.flatten('#pl_blurb#') + '\n');
+function getRandomProductBlurb() {
+  return grammar.flatten('#product_blurb#');
 }
 
-for (var i = 0; i < 10; i++) {
-  console.log(grammar.flatten('#commit_message#'));
+function getRandomPLBlurb() {
+  return grammar.flatten('#pl_blurb#');
 }
+
+function getRandomCommitMessage() {
+  let msg = grammar.flatten('#commit_message#');
+  let branch = ['master', 'develop'].concat(grammar.flatten('#commit_area.dash#'));
+  let hash = btoa(Math.random() * 1000).slice(0, 6).toLowerCase();
+
+  function random(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function sample(array) {
+    return array[random(0, array.length-1)];
+  }
+
+  let files = random(10, 30);
+  let inserted = random(300, 1000);
+  let deleted = random(300, 1000);
+
+  let full = `[${sample(branch)} ${hash}] ${msg}
+   ${files} files changed, ${inserted} insertions(+), ${deleted} deletions(-)`
+
+  return full;
+}
+
+//test();

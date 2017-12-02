@@ -10,7 +10,7 @@
 	</head>
 
 	<body>
-		<div id="dialog-init-character">  
+		<div id="dialog-init-character">
 			<input  />
 		</div>
 
@@ -44,13 +44,18 @@
 
 		</div>
 
-		<div id="part1-actions">
-			<button id="part1-commit">Commit</button>
+		<script type="text/javascript" src="grammar/lib/tracery.js"></script>
+		<script type="text/javascript" src="grammar/lib/animals.js"></script>
+		<script type="text/javascript" src="grammar/lib/words.js"></script>
+		<script type="text/javascript" src="grammar/index.js"></script>
 
+		<div id="part1-actions">
+			<button id="part1-commit" onclick="$('#commit').html(getRandomCommitMessage())">Commit</button>
+			<pre id="commit"></pre>
 		</div>
 
 		<div id="part1-team">
-			
+
 		</div>
 
 	</body>
