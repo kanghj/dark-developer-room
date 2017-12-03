@@ -5,6 +5,8 @@
 let world = {
   phase: 0,
   money: 1000,
+  features: 0,
+  users: 0,
 
   companyInfo: {
     name: undefined,
@@ -28,10 +30,11 @@ function clearSavedGame() {
   localStorage.setItem(LOCAL_STORAGE_KEY, '{}');
 }
 
-let ui = {};
+function randomFromInterval(min, max) {
+  return Math.random()*(max-min+1)+min;
+}
 
 $(() => {
-  ui.money = $('#phase1-money');
   gameLoop();
   setInterval(gameLoop, 1000)
 });
@@ -63,6 +66,21 @@ function renderCompanyInfo() {
   }
 }
 
+function renderResources() {
+  $('#phase1-money').html(`$${world.money}`);
+  $('#phase1-features').html(`Featues: ${world.features}`);
+  $('#phase1-users').html(`Users: ${Math.floor(world.users)}`);
+}
+
+function phase1Commit() {
+  $('#commit').html(getRandomCommitMessage());
+  world.features += randomFromInterval(-0.3, 0.5);
+}
+
+function phase1Step() {
+  world.money -= 1;
+  world.users += world.features / 50;
+}
 
 function gameLoop() {
   // save();
@@ -72,12 +90,16 @@ function gameLoop() {
 }
 
 function step() {
-  world.money -= 1;
+  switch (world.phase) {
+  case 1:
+    phase1Step();
+    break;
+  }
 }
 
 function render() {
   renderPhaseElements();
   renderCompanyInfo();
-  ui.money.html(`$${world.money}`);
+  renderResources();
 }
 
