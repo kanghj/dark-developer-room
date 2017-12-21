@@ -58,8 +58,8 @@ function phase0SetCompanyInfo() {
   world.companyInfo.name = $(".phase0 > #company-name").val();
   world.companyInfo.industry = $(".phase0 > #company-industry").val();
   world.companyInfo.slogan = $(".phase0 > #company-slogan").val();
-  world.phase = 1;
-  world.day = 0;
+  phase1Initialise();
+  gameLoop();
 }
 
 function phase0VisionQuest() {
@@ -79,7 +79,7 @@ function renderCompanyInfo() {
 }
 
 function renderResources() {
-  $('#phase1-money').html(`$${world.money.toFixed(2)}`);
+  $('#phase1-money').html(`$${Math.round(world.money)}`);
   $('#phase1-features').html(`Features: ???`); //); ${world.features}`);
   $('#phase1-users').html(`Users: ${Math.floor(world.users)}`);
 
@@ -87,6 +87,11 @@ function renderResources() {
 
   var product_completion_percent = 1.0 * world.product_completion / world.max_product_completion;
   $('#phase1-product-completion').html(`Product Completion: ${product_completion_percent.toFixed(3)}`);
+}
+
+function phase1Initialise() {
+  world.phase = 1;
+  world.day = 0;
 }
 
 function phase1Commit() {
