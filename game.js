@@ -70,10 +70,10 @@ function renderCompanyInfo() {
   if (world.companyInfo.name === undefined) {
     $("#company-info").hide();
   } else {
-    $('#company-info > #name').html(world.companyInfo.name);
-    $('#company-info > #industry').html(world.companyInfo.industry);
-    $('#company-info > #slogan').html(world.companyInfo.slogan);
-    $('#company-info > #day').html('Day ' + Math.floor(world.day));
+    $('#company-info #name').html(world.companyInfo.name);
+    $('#company-info #industry').html(world.companyInfo.industry);
+    $('#company-info #slogan').html(world.companyInfo.slogan);
+    $('#company-info #day').html('Day ' + Math.floor(world.day));
     $('#company-info').show();
   }
 }
