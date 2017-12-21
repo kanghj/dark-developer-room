@@ -63,7 +63,7 @@ function phase0SetCompanyInfo() {
 }
 
 function phase0VisionQuest() {
-  $('#vision-quest').show();
+  // $('#vision-quest').show();
 }
 
 function renderCompanyInfo() {
