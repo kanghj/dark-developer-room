@@ -57,7 +57,7 @@ function renderPhaseElements() {
 
 function phase0Initialise() {
   let container = $('#phase0-init-character');
-  let { elt, getValue } = fillInTheBlanksElement(getAlternatives(grammar, '#orchestration#'))
+  let { elt, getValue } = fillInTheBlanksElement(getAlternatives(grammar, '#pitch#'))
   container.append(elt);
   phase0Initialise.get = getValue;
 }

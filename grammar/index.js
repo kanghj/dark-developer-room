@@ -299,6 +299,62 @@ var grammar = tracery.createGrammar({
     "return 500 on #commit_area# error",
   ],
 
+  "industry": [
+    "dating", "security", "social network", "finances", "gaming",
+    "entertainment", "food delivery", "drones", "automotive",
+  ],
+
+  "audience": [
+    "babies", "millennials", "athletes", "gamers", "travellers",
+    "foodies", "hipsters", "writers", "blue-collar workers",
+    "startups", "small business owners",
+  ],
+
+  "industry_specific": [
+    "cryptocurrency", "blockchain", "deep learning", "self-driving cars",
+  ],
+
+  "industry_giant": [
+    "Uber", "Facebook", "Twitter", "Instagram", "Pinterest", "Slack",
+  ],
+
+  "value": [
+    "value"
+  ],
+
+  "problem": [
+    "dating in a postmodern society",
+    "finding love on the internet",
+    "making a genuine connection online",
+    "emotional poverty in first-world societies",
+    "compassion being at its lowest since the 90s",
+    "artificial general intelligence",
+    "driving being too hard and error-prone",
+    "acquiring food without having to leave the house",
+    "programming being too hard and logical",
+    "learning being too manual and difficult",
+    "travelling requiring you to actually be present",
+    "packing for travels being too manual a process",
+    "transport for drunk people",
+    "making small talk for sober people",
+  ],
+
+  "do_thing": [
+    "date anonymously",
+    "share cute animal photos",
+    "converse with a bot",
+    "make small talk with each other",
+  ],
+
+  "business_model": [
+    "is free-to-use, with premium features behind microtransactions",
+    "is basically a large upfront payment with optional installments",
+    "begins at a free tier which upsells customers into a lifelong series of payments",
+  ],
+
+  "pitch": [
+    "Like #industry_giant# but for #industry#. We tackle the problem of #problem# by allowing #audience# to #do_thing#. Our business model #business_model#.",
+  ],
 });
 
 // It is designed to scale from single servers to thousands of machines.
