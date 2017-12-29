@@ -383,4 +383,17 @@ function getRandomCommitMessage() {
   return full;
 }
 
+function getAlternatives(grammar, rule) {
+  // This is only intended to work with grammars one level deep
+  // (because it's easier, and because there are exponentially-many
+  // leaves, which isn't useful to us when rendering a form)
+
+  let root = grammar.createRoot(rule);
+  root.expandChildren(rule);
+  const RAW = 0;
+  const RULE = 1;
+  return root.children[0].children
+    .map(c => c.type == RULE ? grammar.symbols[c.symbol].rawRules : c.raw);
+}
+
 //test();

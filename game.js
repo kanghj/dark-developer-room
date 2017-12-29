@@ -45,6 +45,7 @@ function randomFromInterval(min, max) {
 }
 
 $(() => {
+  phase0Initialise();
   gameLoop();
   setInterval(gameLoop, 1000);
 });
@@ -54,10 +55,17 @@ function renderPhaseElements() {
   $(`.phase${world.phase}`).show();
 }
 
+function phase0Initialise() {
+  let container = $('#phase0-init-character');
+  let { elt, getValue } = fillInTheBlanksElement(getAlternatives(grammar, '#orchestration#'))
+  container.append(elt);
+  phase0Initialise.get = getValue;
+}
+
 function phase0SetCompanyInfo() {
   world.companyInfo.name = $(".phase0 > #company-name").val();
   world.companyInfo.industry = $(".phase0 > #company-industry").val();
-  world.companyInfo.slogan = $(".phase0 > #company-slogan").val();
+  world.companyInfo.slogan = phase0Initialise.get(); //$(".phase0 > #company-slogan").val();
   phase1Initialise();
   gameLoop();
 }
