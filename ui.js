@@ -1,4 +1,15 @@
 
+// See https://stackoverflow.com/a/15302051 and http://jsfiddle.net/1y5ndc48/ for approach
+function selectTextWidth(text) {
+  let select = $('<select>').css({ display: 'none' });
+  let opt = $('<option>').html(text);
+  select.append(opt);
+  select.appendTo('body');
+  let w = select.width();
+  select.remove();
+  return w;
+};
+
 // choices is an array of either strings or arrays
 function fillInTheBlanksElement(choices) {
 
@@ -12,6 +23,13 @@ function fillInTheBlanksElement(choices) {
       c.forEach(v =>
         select.append($("<option>").attr('value', v).text(v))
       );
+
+      let onChange = () =>
+        select.width(selectTextWidth(select.find('option:selected').text()));
+
+      select.change(onChange);
+      onChange();
+
       return select;
     }
   });
