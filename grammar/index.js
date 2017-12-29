@@ -301,17 +301,14 @@ var grammar = tracery.createGrammar({
 
   "industry": [
     "dating", "security", "social network", "finances", "gaming",
-    "entertainment", "food delivery", "drones", "automotive",
+    "entertainment", "food delivery", "drones", "self-driving cars",
+    "cryptocurrency", "the blockchain", "deep learning",
   ],
 
   "audience": [
     "babies", "millennials", "athletes", "gamers", "travellers",
     "foodies", "hipsters", "writers", "blue-collar workers",
     "startups", "small business owners",
-  ],
-
-  "industry_specific": [
-    "cryptocurrency", "blockchain", "deep learning", "self-driving cars",
   ],
 
   "industry_giant": [
