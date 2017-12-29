@@ -28,10 +28,10 @@ var grammar = tracery.createGrammar({
   "value_judgement": [
     "open-source", "enterprise-grade", "enterprise-ready",
     "reliable", "highly available", "distributed", "resilient", "fault-tolerant",
-    "scalable", "scale-born", "massively parallel", "multi-master", "web-scale",
+    "scalable", "scale-born", "massively parallel", "multi-master", "web-scale", "cloud-native",
     "serverless", "elastic", "cloud-based", "load-balanced",
     "flexible", "rock-solid",
-    "real-time", "lightning-fast",
+    "real-time", "lightning-fast", "blazing fast",
     "high-performance", "performant", "fast", "efficient",
     "generalized", "specialized", "ad hoc",
     "batteries-included", "lightweight", "powerful", "composable",
@@ -40,6 +40,7 @@ var grammar = tracery.createGrammar({
     "secure",
     "end-to-end",
     "bare-metal", "dead simple",
+
     // "blockchain-based", "trustless",
     // "progressive", "responsive", "mobile-first", "expressive",
   ],
@@ -81,7 +82,8 @@ var grammar = tracery.createGrammar({
     "document database",
     "NoSQL database",
     "engine",
-    "execution engine"
+    "execution engine",
+    "GUI toolkit",
   ],
 
   "consumer_type": [
